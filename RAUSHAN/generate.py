@@ -30,20 +30,15 @@ from telethon.errors import (
     PasswordHashInvalidError
 )
 
-from config import SUPPORT_CHAT
-from RAUSHAN import RAJA
-from RAUSHAN.utils import retry_key
-
-
 import config
 
 
 
-ask_ques = "**☞︎︎︎ ᴄʜᴏᴏsᴇ ᴏɴᴇ ᴛʜᴀᴛ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ sᴇssɪᴏɴ 𖤍 ✔️ **"
+ask_ques = "**☞︎︎︎ 𝐂𝐇𝐎𝐎𝐒𝐄 𝐎𝐍𝐄 𝐓𝐇𝐀𝐓 𝐘𝐎𝐔 𝐖𝐀𝐍𝐓 𝐓𝐎 𝐆𝐄𝐍𝐄𝐑𝐀𝐓𝐄 𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𖤍 ✔️ **"
 buttons_ques = [
     [
         InlineKeyboardButton("▪️ᴘʏʀᴏɢʀᴀᴍ▪️", callback_data="pyrogram"),
-        InlineKeyboardButton("▪️ᴘʏʀᴏɢʀᴀᴍ ᴠ2▪️", callback_data="pyrogram"),
+        InlineKeyboardButton("▪️ᴘʏʀᴏɢʀᴀᴍ ᴠ2 ▪️", callback_data="pyrogram"),
     ],
     [
         InlineKeyboardButton("🔺ᴛᴇʟᴇᴛʜᴏɴ🔺", callback_data="telethon"),
@@ -56,7 +51,7 @@ buttons_ques = [
 
 gen_button = [
     [
-        InlineKeyboardButton(text="🔹ɢᴇɴʀᴀᴛᴇ sᴇssɪᴏɴ🔹", callback_data="generate")
+        InlineKeyboardButton(text="❃𝐆𝐄𝐍𝐄𝐑𝐀𝐓𝐄 𝐒𝐄𝐒𝐒𝐈𝐎𝐍❃", callback_data="generate")
     ]
 ]
 
@@ -98,7 +93,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
     if not is_bot:
         t = "☞︎︎︎ » ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ ᴛᴏ ᴘʀᴏᴄᴇᴇᴅ : \nᴇxᴀᴍᴘʟᴇ : `+91 95xxxxxxXX`'"
     else:
-        t = "ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ʙᴏᴛ_ᴛᴏᴋᴇɴ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ.\nᴇxᴀᴍᴩʟᴇ : `7499240739:AAFFgFe7mmiEnwjPRL-llpbjrcwgwfAN10o`'"
+        t = "ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ʙᴏᴛ_ᴛᴏᴋᴇɴ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ.\nᴇxᴀᴍᴩʟᴇ : `6810174902:AAGQVElsBPTNe6Rj16miPbCrDGikscfarYY`'"
     phone_number_msg = await bot.ask(user_id, t, filters=filters.text)
     if await cancelled(phone_number_msg):
         return
@@ -177,26 +172,8 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             await client.sign_in_bot(phone_number)
     if telethon:
         string_session = client.session.save()
-        await client.send_message(
-                "me",
-                txt.format(ty, string_session, SUPPORT_CHAT),
-                link_preview=False,
-                parse_mode="html",
-            )        
     else:
         string_session = await client.export_session_string()
-            await client.send_message(
-                "me",
-                txt.format(ty, string_session, SUPPORT_CHAT),
-                disable_web_page_preview=True,
-            )
-            await client.join_chat("FallenAssociation")
-         except KeyError:
-        pass
-    try:
-        await client.disconnect()
-        await RAJA.send_message(
-            chat_id=user_id,     
     text = f"**ᴛʜɪs ɪs ʏᴏᴜʀ {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴʀᴀᴛᴇᴅ ʙʏ :[𝐓ᴇᴀᴍ 𝐏ᴜʀᴠɪ](https://t.me/KING_STRING_SESSION_BOT) ᴡᴀʀɴɪɴɢ :** ᴅᴏɴᴛ sʜᴀʀᴇ ᴡɪᴛʜ ᴀɴʏᴏɴᴇ ᴇᴠᴇɴ ɪғ ᴡɪᴛʜ ʏᴏᴜʀ ɢғ 🏴‍☠️"
     try:
         if not is_bot:
