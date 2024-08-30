@@ -34,7 +34,7 @@ import config
 
 
 
-ask_ques = "**☞︎︎︎ 𝐂𝐇𝐎𝐎𝐒𝐄 𝐎𝐍𝐄 𝐓𝐇𝐀𝐓 𝐘𝐎𝐔 𝐖𝐀𝐍𝐓 𝐓𝐎 𝐆𝐄𝐍𝐄𝐑𝐀𝐓𝐄 𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𖤍 ✔️ **"
+ask_ques = "**☞︎︎︎ ᴄʜᴏᴏsᴇ ᴏɴᴇ ᴛʜᴀᴛ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ sᴇssɪᴏɴ  𖤍 ✔️ **"
 buttons_ques = [
     [
         InlineKeyboardButton("▪️ᴘʏʀᴏɢʀᴀᴍ▪️", callback_data="pyrogram"),
