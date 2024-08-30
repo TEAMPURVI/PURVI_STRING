@@ -28,7 +28,11 @@ async def start(bot: Client, msg: Message):
                 [
                     InlineKeyboardButton("🔸 sᴜᴘᴘᴏʀᴛ🔸", url="https://t.me/WORLD_ALPHA"),
                     InlineKeyboardButton("▫️ ᴜᴘᴅᴀᴛᴇs▫️", url="https://t.me/+Q25anL0Ckuk5NzM1")
-                ]
+                ],
+                [
+                    InlineKeyboardButton("🔸 sᴏᴜʀᴄᴇ 🔸", url="https://github.com/TEAMPURVI/PURVI_STRING"),
+                    InlineKeyboardButton("▫️ ᴍᴜsɪᴄ ʙᴏᴛ▫️", url="https://t.me/sonali_robot")
+                ]                
             ]
         ),
         disable_web_page_preview=True,
