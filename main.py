@@ -11,8 +11,6 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 
-logging.getLogger("pymongo").setLevel(logging.ERROR)
-
 # Initialize start time
 StartTime = time.time()
 
