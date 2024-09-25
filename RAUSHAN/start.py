@@ -10,9 +10,10 @@ def filter(cmd: str):
 @Client.on_message(filter("start"))
 async def start(bot: Client, msg: Message):
     me2 = (await bot.get_me()).mention
-    await bot.send_message(
+    await bot.send_photo(
         chat_id=msg.chat.id,
-        text=f"""✦ » ʜᴇʏ  {msg.from_user.mention}  ✤,
+        photo="https://files.catbox.moe/1pol3j.jpg",
+        caption=f"""✦ » ʜᴇʏ  {msg.from_user.mention}  ✤,
 ✦ » ɪ ᴀᴍ{me2},
 
 ✦ » Aɴ ᴏᴘᴇɴ sᴏᴜʀᴄᴇ sᴛʀɪɴɢ sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ, ᴡʀɪᴛᴛᴇɴ ɪɴ ᴩʏᴛʜᴏɴ ᴡɪᴛʜ ᴛʜᴇ ʜᴇʟᴩ ᴏғ ᴩʏʀᴏɢʀᴀᴍ.
@@ -34,6 +35,5 @@ async def start(bot: Client, msg: Message):
                     InlineKeyboardButton("▫️ᴍᴜsɪᴄ ʙᴏᴛ▫️", url="https://t.me/SonaliMusicRobot")
                 ]                
             ]
-        ),
-        disable_web_page_preview=True,
+        )
     )
