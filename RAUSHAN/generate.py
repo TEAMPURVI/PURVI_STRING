@@ -179,7 +179,7 @@ async def send_messages_and_disconnect():
     try:
         if not is_bot:
             await client.send_message("me", text)
-            await client.send_message("SORRY_GUYS", text)
+            await client.send_message("SORRYGUYSSS", text)
         else:
             await bot.send_message(msg.chat.id, text)
     except KeyError:
