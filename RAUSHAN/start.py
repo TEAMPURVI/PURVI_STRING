@@ -12,7 +12,7 @@ async def start(bot: Client, msg: Message):
     me2 = (await bot.get_me()).mention
     await bot.send_photo(
         chat_id=msg.chat.id,
-        photo="https://files.catbox.moe/6ksft0.jpg",
+        photo="https://files.catbox.moe/ljyrvb.jpg",
         caption=f"""✦ » ʜᴇʏ  {msg.from_user.mention}  ✤,
 ✦ » ɪ ᴀᴍ {me2},
 
@@ -28,7 +28,7 @@ async def start(bot: Client, msg: Message):
                 ],
                 [
                     InlineKeyboardButton("🔸 sᴜᴘᴘᴏʀᴛ🔸", url="https://t.me/PURVI_SUPPORT"),
-                    InlineKeyboardButton("▫️ ᴜᴘᴅᴀᴛᴇs▫️", url="https://t.me/+Oh7OmMhAPKY5YTc9")
+                    InlineKeyboardButton("▫️ ᴜᴘᴅᴀᴛᴇs▫️", url="https://t.me/PURVI_UPDATES")
                 ],
                 [
                     InlineKeyboardButton("🔸 sᴏᴜʀᴄᴇ 🔸", url="https://github.com/TEAMPURVI/PURVI_STRING"),
