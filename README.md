@@ -34,4 +34,4 @@
 </p>
 
 
-- <b> sᴩᴇᴄɪᴀʟ ᴛʜᴀɴᴋs ᴛᴏ [𝖳HE PURVI MUSIC™](https://github.com/TEAMPURVI) ғᴏʀ [𝖳HE PURVI MUSIC™](https://github.com/TEAMPURVI/PURVI_MUSIC) </b>
+- <b> sᴩᴇᴄɪᴀʟ ᴛʜᴀɴᴋs ᴛᴏ [ᴀʟᴘʜᴀ™](https://github.com/TEAMPURVI) ғᴏʀ [sᴛʀɪɴɢ ɢᴇɴ](https://github.com/TEAMPURVI/PURVI_STRING) </b>
