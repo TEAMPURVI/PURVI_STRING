@@ -3,7 +3,7 @@ from pyrogram import Client, filters
 
 from config import OWNER_ID
 from RAUSHAN.db.users import add_served_user, get_served_users
-sudo_user_id = 6919199044
+sudo_user_id = 7473021518
 
 @Client.on_message(filters.private & ~filters.service, group=1)
 async def users_sql(_, msg: Message):
